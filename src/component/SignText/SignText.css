@@ -1,0 +1,19 @@
+.sign-text {
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+  padding: 16px 0 70px;
+  color: rgb(160, 160, 160);
+}
+
+.sign-text__link {
+  text-decoration: none;
+  color: rgb(43, 224, 128);
+}
+
+@media screen and (max-width: 548px) {
+  .sign-text {
+    padding: 14px 0 30px;
+    font-size: 12px;
+  }
+}

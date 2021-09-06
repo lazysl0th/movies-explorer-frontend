@@ -1,0 +1,128 @@
+.project {
+  flex-basis: calc(100% - 70px * 2);
+  padding: 110px 0;
+}
+
+.project__table {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.project__table_type_text {
+  justify-content: space-between;
+  column-gap: 40px;
+  padding: 70px 0 110px;
+}
+
+.project__table_type_text .project__table-cell {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.project__table_type_timing .project__table-cell {
+  text-align: center;
+}
+
+.project__table_type_timing .project__table-cell:first-child {
+  flex-grow: 1;
+}
+
+.project__table_type_timing .project__table-cell:last-child {
+  flex-grow: 5;
+}
+
+.project__subtitle {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  letter-spacing: -0.8px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.project__text {
+  margin: 26px 0 0;
+  padding: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.project__timing {
+  margin: 0;
+  padding: 9px 0;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.project__timing_bacgound-color_green {
+  background-color: rgb(43, 224, 128);
+}
+
+.project__timing_bacgound-color_gray {
+  background-color: rgb(242, 242, 242);
+}
+
+.project__arch {
+  margin: 0;
+  padding: 14px 0 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgb(160, 160, 160);
+}
+
+@media screen and (max-width: 768px) {
+  .project {
+    flex-basis: calc(100% - 50px * 2);
+    padding: 90px 0;
+  }
+
+  .project__table_type_text {
+    column-gap: 30px;
+    padding: 70px 0 93px;
+  }
+
+  .project__text {
+    margin: 22px 0 0;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 548px) {
+  .project {
+    flex-basis: calc(100% - 18px * 2);
+    padding: 70px 0;
+  }
+
+  .project__table_type_text {
+    flex-wrap: wrap;
+    padding: 60px 0 60px;
+    row-gap: 56px;
+  }
+
+  .project__subtitle{
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .project__text {
+    margin: 16px 0 0;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .project__timing {
+    font-size: 11px;
+    line-height: 13px;
+    padding: 11px 0;
+  }
+
+  .project__arch {
+    padding: 10px 0 0;
+    font-size: 11px;
+    line-height: 13px;
+  }
+}

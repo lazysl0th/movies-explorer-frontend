@@ -1,0 +1,136 @@
+.label {
+  margin: 0;
+  padding: 0;
+}
+
+.label_form_search {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.label_form_register-login {
+  color: rgb(160, 160, 160);
+  line-height: 12px;
+  font-size: 10px;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.label_form_editprofile {
+  padding: 17px 0 16px;
+  width: 50%;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 500;
+  border-bottom: 1px solid rgb(232, 232, 232);
+}
+
+.label_form_editprofile:last-of-type {
+  border-bottom: none;
+}
+
+.label_margin_top {
+  margin-top: 20px;
+}
+
+.label_type_switch {
+  position: relative;
+  padding: 0 0 0 49px;
+  cursor: pointer;
+  margin-top: 27px;
+}
+
+.label_type_switch::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 0;
+  width: 34px;
+  height: 14px;
+  border-radius: 20px;
+  background: rgb(205, 209, 218);
+  transition: .2s
+}
+
+.label_type_switch::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 2px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgb(255, 255, 255);
+  transition: .2s;
+}
+
+.input_type_chechbox:checked + .label_type_switch::before {
+  background: rgb(43, 224, 128);
+}
+
+.input_type_chechbox:checked + .label_type_switch::after {
+  left: 22px;
+  background: rgb(255, 255, 255);
+}
+
+.label_type_burger-menu {
+  display: none;
+  position: relative;
+  align-items: center;
+  width: 28px;
+  cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  height: 3px;
+  margin-left: auto;
+  z-index: 2;
+}
+
+.label_type_burger-menu::before, .label_type_burger-menu::after {
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: rgb(0, 0, 0);
+}
+
+.label_type_burger-menu::before {
+  content: '';
+  top: -7px;
+}
+
+.label_type_burger-menu::after {
+  content: '';
+  top: 7px;
+}
+
+.input_type_chechbox:checked ~ .label_type_burger-menu {
+  transform: rotate(45deg);
+  position: fixed;
+  right: 30px;
+}
+
+.input_type_chechbox:checked ~ .label_type_burger-menu::before {
+  top: 0;
+  transform: rotate(0);
+}
+
+.input_type_chechbox:checked ~ .label_type_burger-menu::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+@media screen and (max-width: 768px) {
+  .label_type_burger-menu {
+    display: flex;
+  }
+}
+
+@media screen and (max-width: 548px) {
+  .label_type_switch {
+    margin-top: 31px;
+  }
+
+  .input_type_chechbox:checked ~ .label_type_burger-menu {
+    right: 14px;
+  }
+}
+
