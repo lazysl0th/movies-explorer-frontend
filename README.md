@@ -4,6 +4,8 @@
 
 Ссылка на проект: https://movies-explorer.ls.nomoredomains.rocks/
 
+Ссылка на сгенерированный проект https://www.figma.com/file/kVikmJlhq9jZeES1m2BwEJ/Diploma?node-id=891%3A3857
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
