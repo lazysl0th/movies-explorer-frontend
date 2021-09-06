@@ -1,3 +1,9 @@
+# Movies Explorer Fronent
+
+Учебный проект студента факультета Веб-разработки.
+
+Ссылка на проект: https://movies-explorer.ls.nomoredomains.rocks/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
