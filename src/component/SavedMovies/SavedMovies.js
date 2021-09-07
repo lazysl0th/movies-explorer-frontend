@@ -11,9 +11,9 @@ function SavedMovies() {
       <section className="saved-movies">
         <SearchForm />
         <MoviesCardList>
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
+          <MovieCard buttonAddHiddenClass="button_hidden" />
+          <MovieCard buttonAddHiddenClass="button_hidden" />
+          <MovieCard buttonAddHiddenClass="button_hidden" />
         </MoviesCardList>
       </section>
     </Content>

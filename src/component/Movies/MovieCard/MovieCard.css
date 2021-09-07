@@ -1,8 +1,7 @@
 .movie {
   max-width: 339px;
   width: 100%;
-  flex-basis: 270px;
-  min-width: 270px;
+  flex: 1 1 270px;
   display: flex;
   flex-wrap: wrap;
   border-radius: 10px;
@@ -61,10 +60,4 @@
   padding: 0;
   font-size: 11px;
   color: rgb(160, 160, 160);
-}
-
-@media screen and (max-width: 1279px) {
-  .movie {
-    flex-basis: 339px;
-  }
 }

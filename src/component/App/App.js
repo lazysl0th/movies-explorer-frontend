@@ -41,15 +41,11 @@ function App() {
           <Profile />
         </Route>
         <Route path="/signin">
-          <Header typeClass="header_type_login-register" navHiddenClass="header__nav_hidden">
-            <Navigation hiddenClass="navigation_hidden" />
-          </Header>
+          <Header typeClass="header_type_login-register" navHiddenClass="header__nav_hidden" />
           <Login  />
         </Route>
         <Route path="/signup">
-          <Header typeClass="header_type_login-register" navHiddenClass="header__nav_hidden">
-            <Navigation hiddenClass="navigation_hidden" />
-          </Header>
+          <Header typeClass="header_type_login-register" navHiddenClass="header__nav_hidden" />
           <Register />
         </Route>
         <Route path="/*">

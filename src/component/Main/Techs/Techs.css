@@ -29,7 +29,7 @@
   margin: 0 auto;
   padding: 0;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-content: center;
   column-gap: 10px;
   max-width: 690px;
@@ -94,5 +94,6 @@
 
   .techs__techs {
     max-width: 200px;
+    justify-content: space-between;
   }
 }

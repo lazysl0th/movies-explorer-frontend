@@ -11,22 +11,22 @@ function Movies() {
       <section className="movies">
         <SearchForm />
         <MoviesCardList>
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
+          <MovieCard buttonDeleteHiddenClass="button_hidden" />
+          <MovieCard buttonDeleteHiddenClass="button_hidden" />
+          <MovieCard buttonDeleteHiddenClass="button_hidden" />
+          <MovieCard buttonDeleteHiddenClass="button_hidden" />
+          <MovieCard buttonDeleteHiddenClass="button_hidden" />
+          <MovieCard buttonDeleteHiddenClass="button_hidden" />
+          <MovieCard buttonDeleteHiddenClass="button_hidden" />
+          <MovieCard buttonDeleteHiddenClass="button_hidden" />
+          <MovieCard buttonDeleteHiddenClass="button_hidden" />
+          <MovieCard buttonDeleteHiddenClass="button_hidden" />
+          <MovieCard buttonDeleteHiddenClass="button_hidden" />
+          <MovieCard buttonDeleteHiddenClass="button_hidden" />
+          <MovieCard buttonDeleteHiddenClass="button_hidden" />
+          <MovieCard buttonDeleteHiddenClass="button_hidden" />
+          <MovieCard buttonDeleteHiddenClass="button_hidden" />
+          <MovieCard buttonDeleteHiddenClass="button_hidden" />
         </MoviesCardList>
         <ButtonMore text="Ещё" type="button" name="buttonMore" typeButtonClass="button_more" />
       </section>
