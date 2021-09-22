@@ -1,0 +1,20 @@
+.movies {
+  flex-basis: calc(100% - 70px * 2);
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 70px 0 80px
+}
+
+@media screen and (max-width: 865px) {
+  .movies {
+    flex-basis: calc(100% - 30px * 2);
+  }
+}
+
+@media screen and (max-width: 548px) {
+  .movies {
+    flex-basis: calc(100% - 10px * 2);
+  }
+}

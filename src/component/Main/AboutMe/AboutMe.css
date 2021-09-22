@@ -1,0 +1,165 @@
+.student {
+  flex-basis: calc(100% - 70px * 2);
+  padding: 110px 0 100px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.student__info {
+  display: grid;
+  grid-template-areas:
+  "student__name student__photo"
+  "student__profession-age student__photo"
+  "student__about student__photo"
+  "student__links student__photo";
+  justify-content: space-between;
+  column-gap: 49px;
+  row-gap: 18px;
+  margin-top: 66px;
+  width: 100%;
+}
+
+.student__photo {
+  width: 100%;
+  height: auto;
+  max-width: 270px;
+  min-width: 255px;
+  max-height: 327px;
+  min-height: 307px;
+  margin: 0;
+  padding: 0;
+  grid-area: student__photo;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.student__name {
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+  margin: 0;
+  padding: 0;
+  grid-area: student__name;
+}
+
+.student__profession-age {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 20px;
+  margin: 0;
+  padding: 0 0 8px;
+  grid-area: student__profession-age;
+}
+
+.student__about {
+  min-width: 364px;
+  max-width: 600px;
+  font-size: 14px;
+  line-height: 22px;
+  margin: 0;
+  padding: 0;
+  grid-area: student__about;
+}
+
+.student__links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  grid-area: student__links;
+  align-items: flex-end;
+}
+
+.student__item {
+  margin-right: 20px;
+  align-self: flex-end;
+}
+
+.student__item:last-child {
+  margin-right: 0;
+}
+
+.student__link {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .student {
+    padding: 90px 0;
+    flex-basis: calc(100% - 50px * 2);
+  }
+
+  .student__name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .student__profession-age {
+    font-size: 12px;
+    line-height: 18px;
+    padding: 0;
+  }
+
+  .student__about {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .student__about{
+    min-width: 292px;
+  }
+}
+
+@media screen and (max-width: 696px) {
+  .student__info {
+    grid-template-areas:
+    "student__photo"
+    "student__name"
+    "student__profession-age"
+    "student__about"
+    "student__links";
+    row-gap: 20px;
+    margin-top: 60px;
+  }
+
+}
+
+@media screen and (max-width: 548px) {
+  .student {
+    flex-basis: calc(100% - 14px * 2);
+    padding: 0 0 50px;
+  }
+
+  .student__photo {
+    margin-bottom: 20px;
+    max-width: 292px;
+    max-height: 352px;
+  }
+
+  .student__name {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .student__profession-age {
+    font-size: 11px;
+    line-height: 16px;
+
+  }
+
+  .student__about {
+    font-size: 11px;
+    line-height: 16px;
+    margin-bottom: 20px;
+  }
+}
+
+
+
+

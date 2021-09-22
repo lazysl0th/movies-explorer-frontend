@@ -1,0 +1,45 @@
+.movie {
+  max-width: 339px;
+  width: 100%;
+  flex: 1 1 270px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 16px 24px rgba(0,0,0,0.05);
+}
+
+.movie__link {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  height: 151px;
+  overflow: hidden;
+}
+
+.movie__image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.movie__name {
+  padding: 0;
+  font-size: 13px;
+  line-height: 16px;
+  min-width: 206px;
+  margin: 14px auto 10px 12px;
+  max-width: 206px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.movie__duration {
+  width: 100%;
+  margin: 0 0 14px 12px;
+  padding: 0;
+  font-size: 11px;
+  color: rgb(160, 160, 160);
+}

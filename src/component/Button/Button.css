@@ -1,0 +1,139 @@
+.button {
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.button_submit {
+  background-color: rgb(43, 224, 128);
+  color: rgb(255, 255, 255);
+  height: 45px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  flex-grow: 1;
+  min-width: 100px;
+}
+
+.button_submit_disable {
+  background-color: rgb(248, 248, 248);
+  color: rgb(194, 194, 194);
+}
+
+.button_submit:hover {
+  transition: background-color 0.5s linear 0s;
+  background-color: rgba(43, 224, 127, 0.8);
+}
+
+.button_submit_disable:hover {
+  transition: background-color 0.5s linear 0s;
+  background-color: rgba(248, 248, 248, 0.8);
+}
+
+.button_edit {
+  background-color: rgb(255, 255, 255);
+  font-size: 13px;
+  margin: 0 auto;
+}
+
+.button_edit:hover {
+  opacity: 0.7;
+  transition: opacity 0.5s linear 0s;
+}
+
+.button_more {
+  flex-basis: 320px;
+  border: 1px solid rgb(232, 232, 232);
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 11px 0 9px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+}
+
+.button_more:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: background-color 0.5s linear 0s;
+}
+
+.button_add {
+  margin: 14px 12px 0 0;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgb(255, 255, 255);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.09);
+  background-color: rgb(249, 249, 249);
+}
+
+.button_add_active {
+  background-color: rgb(43, 224, 128);
+}
+
+.button_delete {
+  margin: 14px 12px 0 0;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  background-color: rgb(253, 253, 253);
+  transform: rotate(45deg);
+}
+
+.button_cancel {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url('../../images/button-cancel.svg');
+  background-position: center;
+  width: 40px;
+  height: 40px;
+  outline: none;
+  background-repeat: no-repeat;
+  grid-area: popup_type_cancel;
+}
+
+.button_cancel:hover {
+  opacity: 0.6;
+  transition: opacity 0.5s linear 0s;
+}
+
+.button_hidden {
+  display: none;
+}
+
+.button_margin-top_s {
+  margin-top: 69px;
+}
+
+.button_margin-top_m {
+  margin-top: 179px;
+}
+
+@media screen and (max-width: 548px) {
+  .button_submit {
+    min-width: 80px;
+  }
+
+  .button_margin-top_s {
+    margin-top: 157px;
+  }
+
+  .button_cancel {
+    width: 26px;
+    height: 26px;
+    background-size: 150%;
+    justify-self: end;
+  }
+}

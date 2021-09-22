@@ -1,0 +1,49 @@
+.form-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 500;
+  width: 100%;
+  line-height: 29px;
+}
+
+.form-title_form_register-login {
+  padding: 40px 0;
+}
+
+.form-title_form_editprofile {
+  padding: 74px 0 123px;
+  text-align: center;
+}
+
+.form-title_padding_s {
+  padding: 40px 0;
+}
+
+.form-title_padding_l {
+  padding: 74px 0 123px
+}
+
+.form-title_text-align_center {
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .form-title_form_editprofile {
+    padding: 236px 0 96px;
+  }
+}
+
+@media screen and (max-width: 548px) {
+  .form-title_form_register-login {
+    padding: 50px 0 80px;
+    text-align: center;
+  }
+
+  .form_type_register-login {
+    padding: 0 30px
+  }
+
+  .form-title_form_editprofile {
+    padding: 70px 0 80px;
+  }
+}
