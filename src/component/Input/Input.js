@@ -1,3 +1,4 @@
+import React from 'react';
 import './Input.css';
 
 function Input({
@@ -6,10 +7,11 @@ function Input({
   id,
   formClass,
   typeClass,
-  borderClass,
   placeholder,
+  value,
   minLength,
   maxLength,
+  onChange,
   required,
   disabled,
   checked,
@@ -22,8 +24,10 @@ function Input({
         id={id}
         className={`input ${formClass} ${typeClass}`}
         placeholder={placeholder}
+        value={value}
         minLength={minLength}
         maxLength={maxLength}
+        onChange={onChange}
         required={required}
         disabled={disabled}
         checked={checked}/>

@@ -1,34 +1,22 @@
+import React from 'react';
 import './Movies.css';
 import Content from '../Content/Content';
 import SearchForm from './SearchForm/SearchForm';
+import Preloader from '../Preloader/Preloader';
 import MoviesCardList from './MoviesCardList/MoviesCardList';
-import MovieCard from './MovieCard/MovieCard';
-import ButtonMore from '../Button/Button';
 
-function Movies() {
+function Movies({ movies, isLoading, errorSearch, errorFind, savedMovies, searchMovies, handlerChachgeStatusMovie }) {
+
   return (
     <Content>
       <section className="movies">
-        <SearchForm />
-        <MoviesCardList>
-          <MovieCard buttonDeleteHiddenClass="button_hidden" />
-          <MovieCard buttonDeleteHiddenClass="button_hidden" />
-          <MovieCard buttonDeleteHiddenClass="button_hidden" />
-          <MovieCard buttonDeleteHiddenClass="button_hidden" />
-          <MovieCard buttonDeleteHiddenClass="button_hidden" />
-          <MovieCard buttonDeleteHiddenClass="button_hidden" />
-          <MovieCard buttonDeleteHiddenClass="button_hidden" />
-          <MovieCard buttonDeleteHiddenClass="button_hidden" />
-          <MovieCard buttonDeleteHiddenClass="button_hidden" />
-          <MovieCard buttonDeleteHiddenClass="button_hidden" />
-          <MovieCard buttonDeleteHiddenClass="button_hidden" />
-          <MovieCard buttonDeleteHiddenClass="button_hidden" />
-          <MovieCard buttonDeleteHiddenClass="button_hidden" />
-          <MovieCard buttonDeleteHiddenClass="button_hidden" />
-          <MovieCard buttonDeleteHiddenClass="button_hidden" />
-          <MovieCard buttonDeleteHiddenClass="button_hidden" />
-        </MoviesCardList>
-        <ButtonMore text="Ещё" type="button" name="buttonMore" typeButtonClass="button_more" />
+        <SearchForm onSearch={searchMovies} error={errorSearch}/>
+        {
+          isLoading
+            ? <Preloader />
+            : <MoviesCardList movies={movies} savedMovies={savedMovies} error={errorFind} handlerChachgeStatusMovie={handlerChachgeStatusMovie} />
+        }
+
       </section>
     </Content>
   );
