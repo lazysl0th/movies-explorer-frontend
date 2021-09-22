@@ -1,8 +1,10 @@
+import { useHistory } from 'react-router';
 import './Footer.css';
 
 function Footer() {
+  const history = useHistory();
   return (
-    <footer className="footer">
+    <footer className={`footer ${history.location.pathname === '/profile' && 'footer_hidden'}`}>
       <h2 className="footer__title">Учебный проект Яндекс.Практикум х BeatFilm.</h2>
       <p className="footer__copyright">&copy; 2021</p>
       <ul className="footer__links">

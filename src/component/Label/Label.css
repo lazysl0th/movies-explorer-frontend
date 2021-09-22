@@ -37,7 +37,7 @@
   position: relative;
   padding: 0 0 0 49px;
   cursor: pointer;
-  margin-top: 27px;
+  margin-top: 7px;
 }
 
 .label_type_switch::before {
@@ -102,18 +102,19 @@
   top: 7px;
 }
 
-.input_type_chechbox:checked ~ .label_type_burger-menu {
+.input_type_chechbox:checked ~ .navigation .label_type_burger-menu {
   transform: rotate(45deg);
   position: fixed;
   right: 30px;
+  top: 37px;
 }
 
-.input_type_chechbox:checked ~ .label_type_burger-menu::before {
+.input_type_chechbox:checked ~ .navigation .label_type_burger-menu::before {
   top: 0;
   transform: rotate(0);
 }
 
-.input_type_chechbox:checked ~ .label_type_burger-menu::after {
+.input_type_chechbox:checked ~ .navigation .label_type_burger-menu::after {
   top: 0;
   transform: rotate(90deg);
 }
@@ -126,10 +127,10 @@
 
 @media screen and (max-width: 548px) {
   .label_type_switch {
-    margin-top: 31px;
+    margin-top: 11px;
   }
 
-  .input_type_chechbox:checked ~ .label_type_burger-menu {
+  .input_type_chechbox:checked ~ .navigation .label_type_burger-menu {
     right: 14px;
   }
 }

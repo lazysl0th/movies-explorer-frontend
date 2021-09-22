@@ -6,6 +6,10 @@
   background-color: rgb(250, 250, 250);
 }
 
+.footer_hidden {
+  display: none;
+}
+
 .footer__title {
   color: rgb(160, 160, 160);
   font-size: 13px;
