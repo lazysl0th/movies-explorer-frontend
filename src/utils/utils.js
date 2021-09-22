@@ -29,7 +29,7 @@ export const validatorsFunction = {
       return value !== "";
     },
     contains: (value) => {
-      return /*/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test*/(value);
+      return /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(value);
     }
   },
 }

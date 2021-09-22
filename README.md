@@ -1,4 +1,4 @@
-# Movies Explorer Fronent
+# Movies Explorer Fronend
 
 Учебный проект студента факультета Веб-разработки.
 
