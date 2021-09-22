@@ -1,0 +1,20 @@
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profile__link {
+  text-decoration: none;
+  color: hsl(342, 100%, 50%);
+  font-size: 13px;
+  margin: 16px 0 0;
+  width: 100%;
+  text-align: center;
+}
+
+@media screen and (max-width: 548px) {
+  .profile {
+    padding: 0 30px 0;
+  }
+}

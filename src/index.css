@@ -1,0 +1,9 @@
+/*normalize*/
+@import "./vendor/normalize.css";
+/*font*/
+@import "./vendor/inter.css";
+
+#root {
+  min-height: 100vh;
+  background-color: rgb(255, 255, 255);
+}
