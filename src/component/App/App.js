@@ -80,7 +80,6 @@ function App() {
           image: protocolHttps + imageURL + image.url, ...props}))
         : []
     )
-    console.log(JSON.parse(localStorage.getItem('movies')));
   }, [currentUser._id])
 
   React.useEffect(() => {
@@ -115,7 +114,6 @@ function App() {
           }
         })
         .catch((err) =>{
-          console.log(err);
           err.then(({ message }) => setErrors((prevValues) => ({
             ...prevValues,
             registerForm: message,
