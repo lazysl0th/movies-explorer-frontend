@@ -24,7 +24,10 @@ import {
   unknownNameEN,
   unknownURL,
   notFoundErrorText,
-  searchErrorMessageText
+  searchErrorMessageText,
+  textRegSuccess,
+  textUpdateSuccess,
+  textFail
 } from '../../utils/constants';
 
 function App() {
@@ -33,7 +36,9 @@ function App() {
     loggedIn: false,
   });
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(false);
-  const [regState, setRegState] = React.useState(false);
+  const [infoState, setInfoState] = React.useState(false);
+  const [messageInfoTooltip, setMessageInfoTooltip] = React.useState('');
+  const [allMovies, setAllMovies] = React.useState([]);
   const [movies, setMovies] = React.useState([]);
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -43,6 +48,7 @@ function App() {
     profileForm: '',
     find: '',
     search: '',
+    savedSearch: ''
   })
 
   React.useEffect(() => {
@@ -53,6 +59,7 @@ function App() {
             ...userData,
             loggedIn: true,
           })
+          console.log(history)
           history.push('/')
         } else {
           setCurrentUser({
@@ -87,7 +94,8 @@ function App() {
       loginForm: '',
       profileForm: '',
       find: '',
-      search: ''
+      search: '',
+      savedSearch: '',
     })
   }, [])
 
@@ -105,10 +113,12 @@ function App() {
         .then((newUser) => {
           if (newUser) {
             setIsInfoTooltipOpen(true);
-            setRegState(true);
+            setInfoState(true);
+            setMessageInfoTooltip(textRegSuccess);
             submitSigninHandler({ email, password });
           } else {
-            setRegState(true);
+            setIsInfoTooltipOpen(true);
+            setMessageInfoTooltip(textFail)
           }
         })
         .catch((err) =>{
@@ -154,7 +164,7 @@ function App() {
           ...res,
           loggedIn: false,
         })
-        history.push('signin')
+        history.push('/')
       })
       .catch((err) => console.log(err))
   }
@@ -166,6 +176,9 @@ function App() {
     }))
     updateProfile({ email, name })
       .then((userData) => {
+        setIsInfoTooltipOpen(true);
+        setInfoState(true);
+        setMessageInfoTooltip(textUpdateSuccess);
         setCurrentUser((prevState) => ({
           ...prevState,
           ...userData,
@@ -189,9 +202,10 @@ function App() {
       return setErrors((prevValues) => ({...prevValues, search: searchErrorMessageText}));
     }
     setIsLoading(true);
-    getMovies()
+    if (allMovies.length === 0) {
+      getMovies()
       .then((movies) => {
-        const moviesList = filterMovies(movies, searchQuery, shorts).map(({id, trailerLink, image, nameRU, duration, ...props }) => ({
+        const moviesList = movies.map(({id, trailerLink, image, nameRU, duration, ...props }) => ({
           id: id,
           trailer: trailerLink,
           image: protocolHttps + imageURL + image.url,
@@ -199,14 +213,11 @@ function App() {
           duration: duration,
           ...props,
         }));
-        if (moviesList.length === 0) {
-          setErrors((prevValues) => ({...prevValues, find: notFoundErrorText}))
-        } else {
-          setMovies(moviesList.map(({image, trailerLink, ...props}) => ({
-            image: protocolHttps + imageURL + image.url,
-            ...props})));
-          localStorage.setItem('movies', JSON.stringify(moviesList));
-        }
+        setAllMovies(moviesList);
+        const filterMoviesList = filterMovies(moviesList, searchQuery, shorts);
+        (filterMoviesList.length === 0) && setErrors((prevValues) => ({...prevValues, find: notFoundErrorText}))
+        setMovies(filterMoviesList);
+        localStorage.setItem('movies', JSON.stringify(filterMoviesList));
         setIsLoading(false);
       })
       .catch((err) =>
@@ -215,7 +226,29 @@ function App() {
           find: message,
         })))
       );
+    } else {
+      const filterMoviesList = filterMovies(allMovies, searchQuery, shorts);
+      (filterMoviesList.length === 0) && setErrors((prevValues) => ({...prevValues, find: notFoundErrorText}))
+      setMovies(filterMoviesList);
+      localStorage.setItem('movies', JSON.stringify(filterMoviesList));
+      setIsLoading(false);
+    }
   }
+
+  function seacrhSavedMovies({ searchQuery, shorts }) {
+    setErrors((prevValues) => ({
+      ...prevValues,
+      savedSearch: '',
+      find: '',
+    }))
+    if (searchQuery === '') {
+      setErrors((prevValues) => ({...prevValues, savedSearch: searchErrorMessageText}));
+    }
+    const filterMoviesList = filterMovies(savedMovies, searchQuery, shorts);
+    (filterMoviesList.length === 0) && setErrors((prevValues) => ({...prevValues, find: notFoundErrorText}))
+    return filterMoviesList;
+  }
+
   function handlerDeleteMovie(savedMovie) {
     deleteSavedMovie(savedMovie._id)
       .then((deleteMovie) => {
@@ -305,9 +338,10 @@ function App() {
           <ProtectedRoute
             path="/saved-movies"
             component={SavedMovies}
-            errorSearch={errors.search}
+            errorSearch={errors.savedSearch}
             errorFind={errors.find}
             savedMovies={savedMovies}
+            seacrhSavedMovies={seacrhSavedMovies}
             handlerDeleteMovie={handlerDeleteMovie}>
           </ProtectedRoute>
           <ProtectedRoute
@@ -321,7 +355,7 @@ function App() {
             <PageNotFound />
           </Route>
         </Switch>
-        <InfoTooltip isOpen={isInfoTooltipOpen} onClose={closeInfoTooltip} regState={regState}/>
+        <InfoTooltip isOpen={isInfoTooltipOpen} onClose={closeInfoTooltip} infoState={infoState} message={messageInfoTooltip}/>
       </CurrentUserContext.Provider>
     </div>
   );

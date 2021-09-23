@@ -3,21 +3,23 @@ import { useHistory } from 'react-router-dom';
 import './MoviesCardList.css';
 import MovieCard from '../MovieCard/MovieCard';
 import ButtonMore from '../../Button/Button';
-import Error from '../../Form/FormError/FormError';
+import { transitionPoint, cardCountDefault, moreMovies } from '../../../utils/constants'
 
-function MoviesCardList({ movies, savedMovies, error, handlerDeleteMovie, handlerChachgeStatusMovie }) {
+function MoviesCardList({ movies, savedMovies, handlerDeleteMovie, handlerChachgeStatusMovie }) {
   const history = useHistory();
   const [showParams, setShowParams] = React.useState({cardCount: 0, index: 0, limit: 0});
   const [moviesList, setMoviesList] = React.useState([]);
 
   const onResize = React.useCallback (() => {
     const visibleMonitorWidth = document.documentElement.clientWidth;
-    if (visibleMonitorWidth > 768) {
-      setShowParams ({ cardCount: 12, index: 12, limit: 3 });
-    } else if (visibleMonitorWidth > 480 && visibleMonitorWidth <= 768) {
-      setShowParams ({ cardCount: 8, index: 8, limit: 2 });
+    if (visibleMonitorWidth >= transitionPoint[1280]) {
+      setShowParams ({ cardCount: cardCountDefault[12], index: cardCountDefault[12], limit: moreMovies[4] });
+    } else if (visibleMonitorWidth > transitionPoint[768] && visibleMonitorWidth < transitionPoint[1280]) {
+      setShowParams ({ cardCount: cardCountDefault[12], index: cardCountDefault[12], limit: moreMovies[3] });
+    } else if (visibleMonitorWidth > transitionPoint[480] && visibleMonitorWidth <= transitionPoint[768]) {
+      setShowParams ({ cardCount: cardCountDefault[8], index: cardCountDefault[8], limit: moreMovies[2] });
     } else {
-      setShowParams ({ cardCount: 5, index: 5, limit: 2 });
+      setShowParams ({ cardCount: cardCountDefault[5], index: cardCountDefault[5], limit: moreMovies[2] });
     }
   },[])
 
@@ -76,10 +78,8 @@ function MoviesCardList({ movies, savedMovies, error, handlerDeleteMovie, handle
         }
       </ul>
       {
-        (movies.length === 0)
-          ? <Error typeClass="form-error_type_form" error={error}/>
-          : (moviesList.length !== movies.length && history.location.pathname === '/movies')
-              && <ButtonMore text="Ещё" type="button" name="buttonMore" typeButtonClass="button_more" handler={buttonMoreHandler} />
+      (moviesList.length !== movies.length && history.location.pathname === '/movies')
+        && <ButtonMore text="Ещё" type="button" name="buttonMore" typeButtonClass="button_more" handler={buttonMoreHandler} />
       }
     </>
   );

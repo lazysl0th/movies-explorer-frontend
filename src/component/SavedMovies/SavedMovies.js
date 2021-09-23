@@ -3,22 +3,29 @@ import './SavedMovies.css';
 import Content from '../Content/Content';
 import SearchForm from '../Movies/SearchForm/SearchForm';
 import MoviesCardList from '../Movies/MoviesCardList/MoviesCardList';
-import { filterMovies } from '../../utils/utils';
+import Error from '../Form/FormError/FormError';
 
-function SavedMovies({ savedMovies, errorSearch, errorFind, searchMoviesFormSubmit, handlerDeleteMovie }) {
+function SavedMovies({ savedMovies, errorSearch, errorFind, seacrhSavedMovies, handlerDeleteMovie }) {
 
   const [filterMovieList, setFilterMovieList] = React.useState([]);
 
-  function seacrhSavedMovies ({ searchQuery, shorts }) {
-    const moviesList = filterMovies(savedMovies, searchQuery, shorts);
+  function onSeacrhSavedMovies ({ searchQuery, shorts }) {
+    const moviesList = seacrhSavedMovies({ searchQuery, shorts });
+    if (moviesList.length === savedMovies.length) {
+      return
+    }
     setFilterMovieList(moviesList);
   }
 
   return (
     <Content>
       <section className="saved-movies">
-        <SearchForm onSearch={seacrhSavedMovies} error={errorSearch}/>
-        <MoviesCardList movies={filterMovieList.length > 0 ? filterMovieList : savedMovies} handlerDeleteMovie={handlerDeleteMovie} error={errorFind}/>
+        <SearchForm onSearch={onSeacrhSavedMovies} error={errorSearch}/>
+        {
+          !(errorFind)
+            ? <MoviesCardList movies={filterMovieList?.length > 0 ? filterMovieList : savedMovies} handlerDeleteMovie={handlerDeleteMovie}/>
+            : <Error typeClass="form-error_type_form" error={errorFind}/>
+        }
       </section>
     </Content>
   );

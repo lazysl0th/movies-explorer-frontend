@@ -1,9 +1,11 @@
+import { shortsDuration } from "./constants";
+
 export function filterMovies(movies, searchQuery, shorts) {
   return movies.filter((movie) => {
     if (shorts) {
-      return (movie.nameRU.toLowerCase().includes(searchQuery.trim()) && movie.duration <= 40);
+      return (movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase().trim()) && movie.duration <= shortsDuration);
     }
-    return movie.nameRU.toLowerCase().includes(searchQuery.trim());
+    return movie.nameRU.toLowerCase().includes(searchQuery.toLowerCase().trim());
   })
 }
 

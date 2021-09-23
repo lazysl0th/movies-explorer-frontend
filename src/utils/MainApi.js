@@ -18,7 +18,6 @@ export function checkToken() {
     credentials: 'include',
   })
     .then((res) => checkResponse(res))
-    .then((res) => res)
 }
 
 export function register({ name, email, password }) {
@@ -29,7 +28,6 @@ export function register({ name, email, password }) {
     body: JSON.stringify({ name, email, password })
   })
     .then((res) => checkResponse(res))
-    .then((res) => res)
 }
 
 export function login({ email, password }) {
@@ -40,7 +38,6 @@ export function login({ email, password }) {
     body: JSON.stringify({ email, password })
   })
     .then((res) => checkResponse(res))
-    .then((res) => res)
 }
 
 export function logout() {
@@ -49,7 +46,6 @@ export function logout() {
     credentials: 'include',
   })
     .then((res) => (checkResponse(res)))
-    .then((res) => res)
 }
 
 export function updateProfile({ name, email }) {
@@ -60,7 +56,6 @@ export function updateProfile({ name, email }) {
     body: JSON.stringify({ name, email })
   })
     .then((res) => checkResponse(res))
-    .then((res) => res)
 }
 
 export function getSavedMovies() {
@@ -69,7 +64,6 @@ export function getSavedMovies() {
     credentials: 'include',
   })
     .then((res) => checkResponse(res))
-    .then((res) => res)
 }
 
 export function saveMovie({
@@ -105,8 +99,6 @@ export function saveMovie({
     })
   })
     .then((res) => checkResponse(res))
-    .then((res) => res)
-
 }
 
 export function deleteSavedMovie(movieId) {
