@@ -91,6 +91,7 @@ function App() {
           }))
         : []
     )
+    console.log(localMovie);
   }, [currentUser._id])
 
   React.useEffect(() => {
