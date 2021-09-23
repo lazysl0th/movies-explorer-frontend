@@ -80,12 +80,17 @@ function App() {
         setSavedMovies(savedMovies.filter((savedMovies) => savedMovies.owner === currentUser._id));
       })
       .catch((err) => console.log(err))
+    const localMovie = JSON.parse(localStorage.getItem('movies'));
     setMovies(
-      JSON.parse(localStorage.getItem('movies'))
-        ? JSON.parse(localStorage.getItem('movies'))
+      localMovie
+        ? localMovie.map(({image, ...props }) => ({
+          image: typeof(image) === 'string'
+            ? image
+            : protocolHttps + imageURL + image.url,
+          ...props,
+          }))
         : []
     )
-    console.log(movies);
   }, [currentUser._id])
 
   React.useEffect(() => {
@@ -230,7 +235,6 @@ function App() {
       const filterMoviesList = filterMovies(allMovies, searchQuery, shorts);
       (filterMoviesList.length === 0) && setErrors((prevValues) => ({...prevValues, find: notFoundErrorText}))
       setMovies(filterMoviesList);
-      console.log(JSON.stringify(filterMoviesList))
       localStorage.setItem('movies', JSON.stringify(filterMoviesList));
       setIsLoading(false);
     }
