@@ -74,7 +74,6 @@ function App() {
         setSavedMovies(savedMovies.filter((savedMovies) => savedMovies.owner === currentUser._id));
       })
       .catch((err) => console.log(err))
-    console.log(JSON.parse(localStorage.getItem('movies')))
     setMovies(
       JSON.parse(localStorage.getItem('movies'))
         ? JSON.parse(localStorage.getItem('movies'))
