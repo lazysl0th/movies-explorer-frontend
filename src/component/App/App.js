@@ -76,8 +76,8 @@ function App() {
       .catch((err) => console.log(err))
     setMovies(
       JSON.parse(localStorage.getItem('movies'))
-        ? JSON.parse(localStorage.getItem('movies')).map(({image, ...props}) => ({
-          image: protocolHttps + imageURL + image.url, ...props}))
+        ? JSON.parse(localStorage.getItem('movies')).map(({image, trailerLink, ...props}) => ({
+          image: protocolHttps + imageURL + image.url, trailer: trailerLink, ...props}))
         : []
     )
   }, [currentUser._id])
@@ -104,7 +104,6 @@ function App() {
     if ({ name, email, password }) {
       register({ name, email, password })
         .then((newUser) => {
-          console.log(newUser);
           if (newUser) {
             setIsInfoTooltipOpen(true);
             setRegState(true);
@@ -216,7 +215,6 @@ function App() {
         })))
       );
   }
-
   function handlerDeleteMovie(savedMovie) {
     deleteSavedMovie(savedMovie._id)
       .then((deleteMovie) => {
