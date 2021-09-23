@@ -74,10 +74,10 @@ function App() {
         setSavedMovies(savedMovies.filter((savedMovies) => savedMovies.owner === currentUser._id));
       })
       .catch((err) => console.log(err))
+    console.log(JSON.parse(localStorage.getItem('movies')))
     setMovies(
       JSON.parse(localStorage.getItem('movies'))
-        ? JSON.parse(localStorage.getItem('movies')).map(({image, trailerLink, ...props}) => ({
-          image: protocolHttps + imageURL + image.url, trailer: trailerLink, ...props}))
+        ? JSON.parse(localStorage.getItem('movies'))
         : []
     )
   }, [currentUser._id])
@@ -192,18 +192,20 @@ function App() {
     setIsLoading(true);
     getMovies()
       .then((movies) => {
-        const moviesList = filterMovies(movies, searchQuery, shorts);
+        const moviesList = filterMovies(movies, searchQuery, shorts).map(({id, trailerLink, image, nameRU, duration, ...props }) => ({
+          id: id,
+          trailer: trailerLink,
+          image: protocolHttps + imageURL + image.url,
+          nameRU: nameRU,
+          duration: duration,
+          ...props,
+        }));
         if (moviesList.length === 0) {
           setErrors((prevValues) => ({...prevValues, find: notFoundErrorText}))
         } else {
-          setMovies(moviesList.map(({id, trailerLink, image, nameRU, duration, ...props }) => ({
-            id: id,
-            trailer: trailerLink,
+          setMovies(moviesList.map(({image, trailerLink, ...props}) => ({
             image: protocolHttps + imageURL + image.url,
-            nameRU: nameRU,
-            duration: duration,
-            ...props,
-          })));
+            ...props})));
           localStorage.setItem('movies', JSON.stringify(moviesList));
         }
         setIsLoading(false);
