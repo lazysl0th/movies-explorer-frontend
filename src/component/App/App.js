@@ -85,7 +85,7 @@ function App() {
         ? JSON.parse(localStorage.getItem('movies'))
         : []
     )
-    console.log(localStorage.getItem('movies'));
+    console.log(movies);
   }, [currentUser._id])
 
   React.useEffect(() => {
