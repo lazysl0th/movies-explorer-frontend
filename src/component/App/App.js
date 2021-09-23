@@ -59,7 +59,6 @@ function App() {
             ...userData,
             loggedIn: true,
           })
-          console.log(history)
           history.push('/')
         } else {
           setCurrentUser({
@@ -86,6 +85,7 @@ function App() {
         ? JSON.parse(localStorage.getItem('movies'))
         : []
     )
+    console.log(localStorage.getItem('movies'));
   }, [currentUser._id])
 
   React.useEffect(() => {
@@ -230,6 +230,7 @@ function App() {
       const filterMoviesList = filterMovies(allMovies, searchQuery, shorts);
       (filterMoviesList.length === 0) && setErrors((prevValues) => ({...prevValues, find: notFoundErrorText}))
       setMovies(filterMoviesList);
+      console.log(JSON.stringify(filterMoviesList))
       localStorage.setItem('movies', JSON.stringify(filterMoviesList));
       setIsLoading(false);
     }
