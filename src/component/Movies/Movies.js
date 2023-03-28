@@ -19,7 +19,6 @@ function Movies({ movies, isLoading, errorSearch, errorFind, savedMovies, search
               ? <Error typeClass="form-error_type_form" error={errorFind}/>
               : <MoviesCardList movies={movies} savedMovies={savedMovies} error={errorFind} handlerChachgeStatusMovie={handlerChachgeStatusMovie} />
         }
-
       </section>
     </Content>
   );
