@@ -15,16 +15,29 @@
   min-height: 12px;
 }
 
+.form-error_form_search {
+  width: calc(100% - 105px);
+}
+
 .form-error_type_form {
   font-size: 11px;
   line-height: 14px;
-  padding: 189px 0 20px;
+  padding: 125px 0 20px;
   min-height: 14px;
+  text-align: center;
+}
+
+.form-error_form_register {
+  padding: 35px 0 20px;
 }
 
 @media screen and (max-width: 548px) {
   .form-error_type_form {
     padding: 345px 0 20px;
+  }
+
+  .form-error_form_search {
+    width: calc(100% - 85px);
   }
 }
 

@@ -1,8 +1,12 @@
+import React from 'react';
 import './FormError.css';
 
-function FormError({ use, typeClass }) {
+function FormError({ error, formClass, typeClass, }) {
+
   return (
-    <span className={`form-error ${use} ${typeClass} form-error_active`}></span>
+    <span className={`form-error ${formClass} ${typeClass} ${error ? 'form-error_active' : ''}`}>
+      {error}
+    </span>
   );
 }
 

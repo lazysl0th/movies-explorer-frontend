@@ -1,35 +1,68 @@
 import './SearchForm.css';
 import Form from '../../Form/Form';
+import Field from '../../Form/Field/Field';
 import FormInput from '../../Input/Input';
-import FormButton from '../../Button/Button'
+import FormError from '../../Form/FormError/FormError';
+import Submit from '../../Form/Submit/Submit';
+import Button from '../../Button/Button'
 import FormLabel from '../../Label/Label';
+import { validatorsFunction } from '../../../utils/utils';
 
-function SearchForm() {
+function SearchForm({ onSearch, error }) {
+
+  function submitHandler(values) {
+    const { searchQuery, shorts } = values;
+    onSearch({ searchQuery, shorts });
+  }
+
   return (
-    <>
-    <Form formName="searchForm" typeClass="form_type_search">
+    <Form formName="searchForm" typeClass="form_type_search" onSubmit={submitHandler} validators={validatorsFunction}>
       <fieldset className="fieldset">
-        <FormInput
-          type="text"
-          name="search"
-          id="search-input"
-          placeholder="Фильм"
-          formClass="input_form_search"
-          required />
-        <FormButton
-          text="Поиск"
-          type="submit"
-          name="buttonSubmit"
-          typeButtonClass="button_submit" />
+      <Field
+        type="text"
+        name="searchQuery"
+        placeholder="Фильм"
+        required
+        checked
+        >
+          {
+            ({formClass, ...inputProps}) => {
+              return (
+                <>
+                  <FormInput formClass="input_form_search" {...inputProps}/>
+                </>
+              )}
+          }
+      </Field>
+      <Submit>
+          {
+            () =>
+              <Button
+                text="Поиск"
+                type="submit"
+                name="buttonSubmit"
+                formClass="button_submit_form_search"
+                typeButtonClass="button_submit"/>
+          }
+      </Submit>
       </fieldset>
-      <FormInput
+      <FormError formClass="form-error_form_search" typeClass="form-error_type_input" error={error}/>
+      <Field
         type="checkbox"
-        name="shorts"
         id="search-checkbox"
-        typeClass="input_type_chechbox" />
+        name="shorts">
+          {
+            ({formClass, ...inputProps}) => {
+              return (
+                <>
+                  <FormInput formClass="input_type_chechbox" {...inputProps}/>
+                </>
+              )
+            }
+          }
+      </Field>
       <FormLabel use="search-checkbox" text="Короткометражки" formClass="label_form_search" typeClass="label_type_switch"/>
     </Form>
-    </>
   );
 }
 

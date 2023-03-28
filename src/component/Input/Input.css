@@ -6,11 +6,11 @@
 }
 
 .input_form_search {
-  width: 100%;
+  width: calc(100% - 105px);
   max-width: 1002px;
   font-size: 18px;
   line-height: 22px;
-  flex-grow: 13;
+  flex-grow: 2;
 }
 
 .input_form_search::placeholder {
@@ -34,6 +34,7 @@
   font-size: 11px;
   line-height: 14px;
   border-bottom: 1px solid rgb(232, 232, 232);
+  color: rgb(0, 0, 0);
 }
 
 .input_form_editprofile:last-of-type {
@@ -54,4 +55,12 @@
   height: 1px;
   overflow: hidden;
   clip: rect(0 0 0 0);
+}
+
+@media screen and (max-width: 548px) {
+  .input_form_search {
+    width: calc(100% - 85px);
+    font-size: 16px;
+    line-height: 16px;
+  }
 }
